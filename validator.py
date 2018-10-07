@@ -14,7 +14,7 @@ def retrieve_data():
     url = "https://api.lipservice.co.uk/api/wp/v2/artists?foreign=false&filter[posts_per_page]=24&page={}"
     errors = set()
     for i in range(20):
-        artists = json.loads(requests.get(url).text)
+        artists = json.loads(requests.get(url.format(i)).text)
         for artist in artists:
             name, audios = check_artist(artist)
             errors = errors.union(audios)
